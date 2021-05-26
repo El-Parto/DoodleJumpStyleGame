@@ -6,6 +6,7 @@ public class RigidbodyMovement : MonoBehaviour
 {
 
     private Rigidbody2D playerRB;
+    
 
     //public bool isHorriMoving;
     public float moving = 1;
@@ -16,7 +17,9 @@ public class RigidbodyMovement : MonoBehaviour
 
     public float bounceMult = 2;
     public PhysicsMaterial2D bouncer;
-    public bool ableToBounce = true;
+    public bool ableToBounce = false;
+
+
 
     [SerializeField]
     private bool isGrounded = true;
@@ -26,7 +29,8 @@ public class RigidbodyMovement : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         // isHorriMoving = false;
-        bouncer = GetComponent<PhysicsMaterial2D>();
+        //bouncer = GetComponent<PhysicsMaterial2D>();
+       // playerColl = GetComponentInChildren<Collider2D>();
     }
 
     // Update is called once per frame
@@ -37,7 +41,7 @@ public class RigidbodyMovement : MonoBehaviour
 
         HorizontalMove();
         VerticalMove();
-
+        Bouncing();
     }
 
     private void FixedUpdate()
@@ -55,19 +59,16 @@ public class RigidbodyMovement : MonoBehaviour
 
     }
 
-    private void Bouncing( float timer)
+    private void Bouncing()
     {
-        timer = 1.5f;
-        //so when you press space, you launch yourself higher by multipying the bounce of the platform Physic
-        if (Input.GetKeyDown(KeyCode.Space)&& timer > 0)
+        if (ableToBounce)
         {
-            timer = timer-- * (Time.deltaTime * 0.5f);
-            bouncer.bounciness = bouncer.bounciness * bounceMult;
-
-
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                bouncer.bounciness = bouncer.bounciness * bounceMult;
+                bouncer.bounciness = Mathf.Clamp(bouncer.bounciness, 0, 2);
+            }
         }
-        if (isGrounded && ableToBounce)
-            timer = 1.5f;
     }
 
     private void HorizontalMove()
@@ -78,26 +79,46 @@ public class RigidbodyMovement : MonoBehaviour
         //InherentDash();
     }
 
-    public void InherentDash()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //tempDash = tempDash + moving * Time.deltaTime;
-        //if(tempDash <= moving && isHorriMoving)
-        //{
-        //    tempDash = tempDash - (moving * 0.5f);
+        if (collision.gameObject.tag == "Bouncy")
+            ableToBounce = true;
+        Debug.Log("buffer start");
 
-        //}
-        //else if (!isHorriMoving)
-        //{
-        //    tempDash = 0;
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bouncer.bounciness = bouncer.bounciness * bounceMult;
+            bouncer.bounciness = Mathf.Clamp(bouncer.bounciness, 0, 2);
+        }
+
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        ableToBounce = false;
+        bouncer.bounciness = 1;
+        Debug.LogWarning("buffer has stopped");
+    }
+
+
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Jumpable")
         {
             isGrounded = true;
+            ableToBounce = true;
         }
+        if (collision.gameObject.tag == "Bouncy")
+        {
+            ableToBounce = true;
+        }
+
+        
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
