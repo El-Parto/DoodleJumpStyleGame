@@ -36,13 +36,13 @@ public class RigidbodyMovement : MonoBehaviour
         playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
 
         HorizontalMove();
-        
+        VerticalMove();
 
     }
 
     private void FixedUpdate()
     {
-        VerticalMove();
+        
     }
 
 
