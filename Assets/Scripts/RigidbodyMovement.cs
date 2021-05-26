@@ -16,7 +16,7 @@ public class RigidbodyMovement : MonoBehaviour
 
     public float bounceMult = 2;
     public PhysicsMaterial2D bouncer;
-    public bool ableToBounce true;
+    public bool ableToBounce = true;
 
     [SerializeField]
     private bool isGrounded = true;
