@@ -7,12 +7,16 @@ public class RigidbodyMovement : MonoBehaviour
 
     private Rigidbody2D playerRB;
 
-    public bool isHorriMoving;
+    //public bool isHorriMoving;
     public float moving = 1;
-    public float tempDash = 2;
+    //public float tempDash = 2;
 
     public float moveSpeed = 20;
     public float jumpHeight = 20;
+
+    public float bounceMult = 2;
+    public PhysicsMaterial2D bouncer;
+    public bool ableToBounce true;
 
     [SerializeField]
     private bool isGrounded = true;
@@ -21,13 +25,14 @@ public class RigidbodyMovement : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        isHorriMoving = false;
+        // isHorriMoving = false;
+        bouncer = GetComponent<PhysicsMaterial2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        VerticalMove();
+        
         playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
 
         HorizontalMove();
@@ -35,21 +40,40 @@ public class RigidbodyMovement : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        VerticalMove();
+    }
+
+
     private void VerticalMove()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            playerRB.velocity += Vector2.up * jumpHeight * Time.deltaTime;
+            playerRB.velocity += Vector2.up * jumpHeight;
         }
-        
 
     }
 
+    private void Bouncing( float timer)
+    {
+        timer = 1.5f;
+        //so when you press space, you launch yourself higher by multipying the bounce of the platform Physic
+        if (Input.GetKeyDown(KeyCode.Space)&& timer > 0)
+        {
+            timer = timer-- * (Time.deltaTime * 0.5f);
+            bouncer.bounciness = bouncer.bounciness * bounceMult;
+
+
+        }
+        if (isGrounded && ableToBounce)
+            timer = 1.5f;
+    }
 
     private void HorizontalMove()
     {
-        isHorriMoving = true;
-        moving = Input.GetAxisRaw("Horizontal") * moveSpeed + tempDash;
+        //isHorriMoving = true;
+        moving = Input.GetAxisRaw("Horizontal") * moveSpeed;
         
         //InherentDash();
     }
