@@ -51,7 +51,7 @@ public class Movement : PlayerManager
     // Update is called once per frame
     void Update()
     {
-        transform.position += movement;
+        //transform.position += movement;
         movement = Vector3.zero;
     }
 
