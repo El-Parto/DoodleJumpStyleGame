@@ -397,7 +397,6 @@ MonoBehaviour:
   scoreData: {fileID: 2046893659}
   timerText: {fileID: 908824767}
   gameLoader: {fileID: 0}
-  mMenuEelemts: {fileID: 0}
 --- !u!4 &880971034
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,7 +1055,6 @@ MonoBehaviour:
   scoreData: {fileID: 2046893659}
   timerText: {fileID: 908824767}
   gameLoader: {fileID: 1882872073}
-  mMenuEelemts: {fileID: 0}
 --- !u!1 &1351807809
 GameObject:
   m_ObjectHideFlags: 0
