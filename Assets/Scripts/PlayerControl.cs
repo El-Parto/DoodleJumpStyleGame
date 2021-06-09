@@ -9,6 +9,8 @@ namespace Doodle
 
         private Rigidbody2D playerRB;
 
+        public bool canMove = true;
+
         public float moving = 1;
         public float moveSpeed = 20;
         public float jumpHeight = 10;
@@ -22,42 +24,43 @@ namespace Doodle
         [SerializeField]
         private bool isGrounded = true;
 
+        public bool wonGame = false;
+
+
+
         // Start is called before the first frame update
         void Start()
         {
             playerRB = GetComponent<Rigidbody2D>();
-
-            //bouncer = GetComponent<PhysicsMaterial2D>();
-
-
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
             playerRB.velocity = new Vector2(moving, playerRB.velocity.y);               
-
             HorizontalMove();
             VerticalMove();
             Bouncing();
-
         }
 
         private void VerticalMove()
         {
-            if (Input.GetButtonDown("Jump") && isGrounded)
+            if (canMove)
             {
-                playerRB.velocity += Vector2.up * jumpHeight;
+                if (Input.GetButtonDown("Jump") && isGrounded)
+                {
+                    playerRB.velocity += Vector2.up * jumpHeight;
+                }
             }
-
         }
         private void HorizontalMove()
         {
             //isHorriMoving = true;
-            moving = Input.GetAxisRaw("Horizontal") * moveSpeed;
-
+            if (canMove)
+            {
+                moving = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            }
             //InherentDash();
         }
         private void OnCollisionEnter2D(Collision2D collision)
@@ -66,14 +69,10 @@ namespace Doodle
             {
                 isGrounded = true;
             }
-            if (collision.gameObject.tag == "Win")
+            if (collision.gameObject.tag == "Win Con")
             {
-
-            }
-            if (collision.gameObject.tag == "Lose")
-            {
-
-            }
+                wonGame = true;
+            }            
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -104,7 +103,6 @@ namespace Doodle
                     ableToBounce = false;
                     Debug.Log("off bounce");
                 }
-
             }
         }
 
