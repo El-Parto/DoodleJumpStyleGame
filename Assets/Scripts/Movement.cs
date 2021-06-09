@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CapsuleCollider), typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerInput))]
-public class Movement : PlayerManager
+public class Movement : Scoring
 {
 
 
