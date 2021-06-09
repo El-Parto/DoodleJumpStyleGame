@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6124bb417356548b40558f706d3d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playControl: {fileID: 0}
   scoreData: {fileID: 2046893659}
   timerText: {fileID: 908824767}
 --- !u!4 &880971034
@@ -532,7 +533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: TimerText
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1075,6 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56661c6f1a82df94cbb6d1ebf32eb528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   moving: 1
   moveSpeed: 20
   jumpHeight: 50
@@ -1082,6 +1084,7 @@ MonoBehaviour:
   ableToBounce: 0
   bouncePress: 0
   isGrounded: 0
+  wonGame: 0
 --- !u!1818360609 &1838780956
 RotationConstraint:
   m_ObjectHideFlags: 0
