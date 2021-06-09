@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//
 namespace Doodle
 {
 
@@ -11,9 +11,11 @@ namespace Doodle
     public class Scoring : MonoBehaviour
     {
 
+        public PlayerControl playCont;
 
+        public float timer = Time.time;
 
-        public int currentScore;
+        
         public int highScore;
 
 
@@ -27,7 +29,7 @@ namespace Doodle
         // Update is called once per frame
         void Update()
         {
-
+            
         }
     }
 }
