@@ -11,7 +11,7 @@ namespace Doodle
 
         public PlayerControl playCont;
 
-        public float timer = Time.time;
+        public float timer;
 
         
         public int highScore;
@@ -21,13 +21,13 @@ namespace Doodle
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            timer = Time.time;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Doodle
 
         public float moving = 1;
         public float moveSpeed = 20;
-        public float jumpHeight = 20;
+        public float jumpHeight = 10;
         public float bounceMult = 2;
         //public PhysicsMaterial2D bouncer;
         [SerializeField]
@@ -37,7 +37,7 @@ namespace Doodle
         void Update()
         {
 
-            playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
+            playerRB.velocity = new Vector2(moving, playerRB.velocity.y);               
 
             HorizontalMove();
             VerticalMove();
