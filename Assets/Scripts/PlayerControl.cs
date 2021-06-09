@@ -42,6 +42,9 @@ namespace Doodle
             HorizontalMove();
             VerticalMove();
             Bouncing();
+            if (wonGame)
+                canMove = false;            
+            
         }
 
         private void VerticalMove()
