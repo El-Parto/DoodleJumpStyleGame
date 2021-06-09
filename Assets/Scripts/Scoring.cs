@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Doodle
 {
+
+
     //serving as data for player (?)
     // basically the monobehaviour so you can place it on the player.
     public class Scoring : MonoBehaviour

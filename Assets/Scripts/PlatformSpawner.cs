@@ -41,7 +41,7 @@ namespace Doodle
             Vector3 platformPos = new Vector3(0, Random.Range(minYheight, maxYheight));
             Vector3 winPos = new Vector3(0, 200);
 
-            
+            Instantiate(winCon, winPos, Quaternion.identity);
 
             for (int i = 0; i < platformCount; i++)
             {
@@ -53,7 +53,7 @@ namespace Doodle
             }
             //foreach (GameObject platty in platformCount)
             //{
-            Instantiate(winCon, winPos, Quaternion.identity);
+
             //}   
         }
         
