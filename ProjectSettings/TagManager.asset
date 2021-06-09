@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Jumpable
   - BounceTrigger
-  - Win Con
   layers:
   - Default
   - TransparentFX

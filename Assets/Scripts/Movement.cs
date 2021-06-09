@@ -1,8 +1,9 @@
+
+/*
 using UnityEngine;
 using UnityEngine.InputSystem;
 // handles the player moving. Not to be confused with Player manager, that handles the DATA so that the this script can use it.
 
-/*
 [RequireComponent(typeof(CapsuleCollider), typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerInput))]
 public class Movement : Scoring
