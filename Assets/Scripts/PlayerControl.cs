@@ -32,16 +32,19 @@ namespace Doodle
         void Start()
         {
             playerRB = GetComponent<Rigidbody2D>();
-            
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            playerRB.velocity = new Vector2(moving, playerRB.velocity.y);               
+            playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
             HorizontalMove();
             VerticalMove();
             Bouncing();
+            if (wonGame)
+                canMove = false;
+
         }
 
         private void VerticalMove()
@@ -72,7 +75,7 @@ namespace Doodle
             if (collision.gameObject.tag == "Win Con")
             {
                 wonGame = true;
-            }            
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
