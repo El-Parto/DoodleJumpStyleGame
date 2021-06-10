@@ -673,6 +673,7 @@ MonoBehaviour:
   m_PresetInfoIsWorld: 0
 --- !u!223 &1503447323
 Canvas:
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -714,12 +715,15 @@ RectTransform:
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1503447325
 MonoBehaviour:
+=======
+>>>>>>> parent of d89e303 (UI modo)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503447320}
   m_Enabled: 1
+<<<<<<< HEAD
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -829,10 +833,28 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1092941374
 Transform:
+=======
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1503447324
+RectTransform:
+>>>>>>> parent of d89e303 (UI modo)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1092941373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.3317533, y: -1.4271184, z: 110.48721}
@@ -1023,15 +1045,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of d89e303 (UI modo)
   m_GameObject: {fileID: 1503447320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 908824766}
+<<<<<<< HEAD
   - {fileID: 1351807810}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+=======
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+>>>>>>> parent of d89e303 (UI modo)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1080,6 +1109,9 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d89e303 (UI modo)
 =======
 >>>>>>> parent of d89e303 (UI modo)
   m_TextStyleHashCode: 0
@@ -1257,6 +1289,7 @@ SpriteRenderer:
 --- !u!4 &1614039500
 Transform:
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1355,6 +1388,8 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &1783769304
 RectTransform:
+=======
+>>>>>>> parent of d89e303 (UI modo)
 =======
 >>>>>>> parent of d89e303 (UI modo)
   m_ObjectHideFlags: 0

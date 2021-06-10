@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 namespace Doodle
 {
@@ -19,12 +18,6 @@ namespace Doodle
 
         [SerializeField]
         private TextMeshProUGUI timerText;
-
-        [SerializeField]
-        private GameObject gameLoader;
-        [SerializeField]
-        private GameObject mMenuEelemts;
-
 
 
         // Start is called before the first frame update
@@ -48,20 +41,6 @@ namespace Doodle
                 //reset timer
 
             }
-        }
-        public void PlayGame()
-        {
-            gameLoader.SetActive(true);
-            mMenuEelemts.SetActive(false);
-
-        }
-        public void QuitGame()
-        {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-        Application.Quit();
-        #endif
         }
     }
 }
