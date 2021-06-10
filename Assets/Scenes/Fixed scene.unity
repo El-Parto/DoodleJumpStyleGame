@@ -226,6 +226,53 @@ PositionConstraint:
   m_Sources:
   - sourceTransform: {fileID: 5161259219366177899}
     weight: 1
+--- !u!1 &1788902238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788902240}
+  - component: {fileID: 1788902239}
+  m_Layer: 0
+  m_Name: score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1788902239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788902238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc45f7266d8f374c824159a0189ccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playCont: {fileID: 5161259219366177898}
+  timer: 0
+  highScore: 0
+  startedGame: 0
+--- !u!4 &1788902240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788902238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 198.18831, y: 124.95585, z: -102.69452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5161259218923431800
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +322,7 @@ MonoBehaviour:
   playCont: {fileID: 0}
   timer: 0
   highScore: 0
+  startedGame: 0
 --- !u!1 &5161259219090890795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,8 +1804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a68183f5f2d294c95fe7ad0a74eb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pCntrl: {fileID: 5161259219366177898}
   platform: {fileID: 2080911572693676583, guid: 6ba321714d1d0504a8078c00bd5c2b9f, type: 3}
-  spawnArea: {fileID: 0}
+  spawnArea: {fileID: 5161259220970243285}
   winCon: {fileID: 4600577097378415455, guid: 6b44751f67cbc7344ace468e49d2aaf4, type: 3}
   platformCount: 100
   maxYheight: 200

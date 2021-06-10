@@ -38,16 +38,15 @@ public class RigidbodyMovement : MonoBehaviour
     {
         
         playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
+        
+
 
         HorizontalMove();
         VerticalMove();
-        Bouncing();
-    }
-
-    private void FixedUpdate()
-    {
         
     }
+
+    
 
 
     private void VerticalMove()
@@ -81,16 +80,17 @@ public class RigidbodyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Bouncy")
+        {
             ableToBounce = true;
+            Bouncing();
+        }
+            
         Debug.Log("buffer start");
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            bouncer.bounciness = bouncer.bounciness * bounceMult;
-            bouncer.bounciness = Mathf.Clamp(bouncer.bounciness, 0, 2);
-        }
-
+        
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)

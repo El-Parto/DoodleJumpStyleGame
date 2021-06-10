@@ -5,6 +5,8 @@ namespace Doodle
 {
     public class PlatformSpawner : MonoBehaviour
     {
+        public PlayerControl pCntrl;
+
         [SerializeField]
         private GameObject platform;
         [SerializeField]
@@ -32,7 +34,8 @@ namespace Doodle
         // Update is called once per frame
         void Update()
         {
-
+            if (pCntrl.wonGame)
+                spawnArea.gameObject.SetActive(false);
         }
 
         private void Spawner()
@@ -48,13 +51,11 @@ namespace Doodle
                 platformPos.y = Random.Range(minYheight, maxYheight);
                 platformPos.x = Random.Range(minXpos, maxXpos);
 
+                
 
-                Instantiate(platform, platformPos, Quaternion.identity);
+                Instantiate(platform,  platformPos, Quaternion.identity, spawnArea.transform);
             }
-            //foreach (GameObject platty in platformCount)
-            //{
-
-            //}   
+ 
         }
         
         //private void Platforms(GameObject)

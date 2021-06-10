@@ -8,18 +8,14 @@ using UnityEngine.Animations;
 
 namespace Doodle
 {
-
-
     public class GameGui : MonoBehaviour
     {
         public PlayerControl playControl;
 
         [SerializeField]
         private new Camera camera;
-
         [SerializeField]
         private Scoring scoreData;
-
         [SerializeField]
         private TextMeshProUGUI timerText;
 
@@ -28,18 +24,10 @@ namespace Doodle
         [SerializeField]
         private GameObject mMenuEelemts;
 
-
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
-            timerText.text = scoreData.timer.ToString("F0");
+            timerText.text = scoreData.timer.ToString("F0"); // 
         }
 
         private void WinGame()
@@ -48,6 +36,7 @@ namespace Doodle
             {
                 camera.GetComponent<PositionConstraint>().enabled = false;
                 camera.GetComponent<PositionConstraint>().constraintActive = false;
+
                 //show win screen
                 //save out time taken,
                 //reset timer
@@ -61,6 +50,7 @@ namespace Doodle
             camera.GetComponent<PositionConstraint>().constraintActive = true;
             camera.GetComponent<PositionConstraint>().enabled = true;
             timerText.gameObject.SetActive(true);
+            scoreData.startedGame = true;
         }
         public void QuitGame()
         {
