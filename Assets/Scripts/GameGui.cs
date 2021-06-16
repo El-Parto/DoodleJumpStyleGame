@@ -14,32 +14,50 @@ namespace Doodle
 
         [SerializeField]
         private new Camera camera;
+        
         [SerializeField]
-        private Scoring scoreData;
-        [SerializeField]
-        private TextMeshProUGUI timerText;
+        private Scoring score = new Scoring();
+        
+
+
+        public TextMeshProUGUI timerText;
+        public TextMeshProUGUI score2Beat;
+        public TextMeshProUGUI winningScore; // the score that shows up as you beat the game
+        public TextMeshProUGUI savedScore; // the score that shows up as you save the score
+
+        public Button saveButton;
+        public Button reloadButton;
 
         [SerializeField]
         private GameObject gameLoader;
         [SerializeField]
         private GameObject mMenuEelemts;
+        public bool startedGame = false;
+
+        public float timer;
+
+        private void Start()
+        {
+            winningScore.text = score.highScore.ToString("F2");
+        }
 
         // Update is called once per frame
         void Update()
-        {
-            timerText.text = scoreData.timer.ToString("F0"); // 
+        {        
+            Timer();
+            if (playControl.wonGame)
+            {
+                WonGame();
+                
+            }
+            
         }
 
         private void WinGame()
         {
             if (playControl.wonGame == true)
             {
-                camera.GetComponent<PositionConstraint>().enabled = false;
-                camera.GetComponent<PositionConstraint>().constraintActive = false;
 
-                //show win screen
-                //save out time taken,
-                //reset timer
 
             }
         }
@@ -50,7 +68,7 @@ namespace Doodle
             camera.GetComponent<PositionConstraint>().constraintActive = true;
             camera.GetComponent<PositionConstraint>().enabled = true;
             timerText.gameObject.SetActive(true);
-            scoreData.startedGame = true;
+            startedGame = true;            
         }
         public void QuitGame()
         {
@@ -59,6 +77,38 @@ namespace Doodle
 #else
         Application.Quit();
 #endif
+        }
+        private void Timer()
+        {
+            if (startedGame == true)
+            {
+                timer += 1 * (Time.deltaTime);
+                timerText.text = timer.ToString("F0");  
+            }
+        }
+
+        public void WonGame()
+        {
+            camera.GetComponent<PositionConstraint>().enabled = false;
+            camera.GetComponent<PositionConstraint>().constraintActive = false;
+
+            startedGame = false;
+            score.highScore = timer;
+            
+            winningScore.gameObject.SetActive(true);
+            timerText.gameObject.SetActive(false);
+            winningScore.text = $"You completed the game in {score.highScore.ToString("F2")} seconds! \n Would you like to save this score?";
+            saveButton.gameObject.SetActive(true);
+            reloadButton.gameObject.SetActive(true);            
+        }
+
+        public void SaveScore()
+        {
+            savedScore.text = score.highScore.ToString("F2");
+        }
+        public void LoadMenu()
+        {
+            SceneManager.LoadScene("Fixed Game v1");
         }
     }
 }

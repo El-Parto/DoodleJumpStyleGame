@@ -6,7 +6,7 @@ namespace Doodle
 {
     public class PlayerControl : MonoBehaviour
     {
-        private PlatformSpawner pSpawn;
+        
 
         private Rigidbody2D playerRB;
 
@@ -80,7 +80,8 @@ namespace Doodle
             if (collision.gameObject.tag == "Win Con")
             {
                 wonGame = true;
-               
+                playerRB.velocity = playerRB.velocity * 0; //negates all velocity
+                moveSpeed = 0;
             }
         }
 
