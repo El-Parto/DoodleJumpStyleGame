@@ -682,18 +682,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1799697191}
-        m_TargetAssemblyTypeName: SaveLoad.SaveLoad, Assembly-CSharp
-        m_MethodName: SaveBinary
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5161259219713427534}
         m_TargetAssemblyTypeName: Doodle.GameGui, Assembly-CSharp
         m_MethodName: SaveScore
@@ -1350,7 +1338,7 @@ GameObject:
   - component: {fileID: 1499497951}
   - component: {fileID: 1499497950}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: LoadButton (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -284}
+  m_AnchoredPosition: {x: 402, y: -224}
   m_SizeDelta: {x: 176.97, y: 51.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499497950
@@ -1440,9 +1428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1799697191}
-        m_TargetAssemblyTypeName: SaveLoad.SaveLoad, Assembly-CSharp
-        m_MethodName: LoadBinary
+      - m_Target: {fileID: 5161259219713427534}
+        m_TargetAssemblyTypeName: Doodle.GameGui, Assembly-CSharp
+        m_MethodName: LoadScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1653,9 +1641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9579327baba031043ae2eaa2db8ad8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score:
-    highScore: 0.59
-    savedScore: 0
 --- !u!4 &1799697192
 Transform:
   m_ObjectHideFlags: 0
@@ -2588,6 +2573,7 @@ MonoBehaviour:
   score:
     highScore: 0
     savedScore: 0
+  saveLoad: {fileID: 1799697191}
   timerText: {fileID: 5161259220099002062}
   score2Beat: {fileID: 0}
   winningScore: {fileID: 1486387376}
@@ -2760,7 +2746,7 @@ GameObject:
   - component: {fileID: 5161259220117762917}
   - component: {fileID: 5161259220117762914}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Play Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2803,7 +2789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -196}
+  m_AnchoredPosition: {x: 402, y: -136}
   m_SizeDelta: {x: 176.97, y: 51.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5161259220117762916
@@ -2957,7 +2943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -375}
+  m_AnchoredPosition: {x: 402, y: -315}
   m_SizeDelta: {x: 176.97, y: 51.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5161259220151113656

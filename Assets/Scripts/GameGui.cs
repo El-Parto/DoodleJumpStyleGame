@@ -17,7 +17,9 @@ namespace Doodle
 
         [SerializeField]
         private Scoring score;
-        
+
+        [SerializeField]
+        private SaveLoad.SaveLoad saveLoad;
 
 
         public TextMeshProUGUI timerText;
@@ -38,8 +40,6 @@ namespace Doodle
 
         private void Start()
         {
-            score.savedScore = 999;
-            winningScore.text = score.highScore.ToString("F2");
             savedScore.text = $"Saved Score \n {score.savedScore.ToString("F2")}";
         }
 
@@ -108,7 +108,16 @@ namespace Doodle
         public void SaveScore()
         {
             savedScore.text = $"Saved Score \n {score.highScore.ToString("F2")}";
-            score.savedScore = score.highScore;
+            score.savedScore = timer;
+
+            saveLoad.SaveBinary(score);
+        }
+
+        public void LoadScore()
+        {
+            score = saveLoad.LoadBinary();
+
+            savedScore.text = $"Saved Score \n {score.highScore.ToString("F2")}";
         }
         public void LoadMenu()
         {

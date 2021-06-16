@@ -12,9 +12,9 @@ namespace SaveLoad
         //private GameGui gui;
 
 
-        public Scoring score;
+        //public Scoring score;
 
-        private string FilePath => Application.streamingAssetsPath + "/score";
+        private string FilePath => Application.streamingAssetsPath + "/scoreData";
 
         // Start is called before the first frame update
         void Start()
@@ -22,10 +22,9 @@ namespace SaveLoad
             ValidateFolder(Application.streamingAssetsPath);
         }
 
+
         private void ValidateFolder(string _folder)
         {
-            string folderName = "scoreFolder";
-            _folder = folderName;
             if (!Directory.Exists(_folder))
                 Directory.CreateDirectory(_folder);
         }
@@ -33,16 +32,15 @@ namespace SaveLoad
 
 
 
-        public void SaveBinary()
+        public void SaveBinary(Scoring score)
         {
             // * This opens the "river" between the RAM and the file.
             // creating te river                         file loc'             river? Important.
             using (FileStream stream = new FileStream(FilePath + ".save", FileMode.OpenOrCreate))
             {
-
                 // like creating the boat that will carry the data from one point to another.
                 BinaryFormatter formatter = new BinaryFormatter();
-
+                
                 //give memory stream
                 //* transports the data from the RAM to the specified file
                 // * like freezing water into ice.
@@ -51,11 +49,11 @@ namespace SaveLoad
         }
 
 
-        public void LoadBinary()
+        public Scoring LoadBinary()
         {
             //if there is no save data we shouldn't attempt to load it
             if (!File.Exists(FilePath + ".save"))
-                return;
+                return null;
 
             // * This opens the "river" between the RAM and the file.
             // creating te river                         file loc'             river? Important.
@@ -64,7 +62,7 @@ namespace SaveLoad
                 // like creating the boat that will carry the data from one point to another.
                 BinaryFormatter formatter = new BinaryFormatter();
 
-                score = formatter.Deserialize(stream) as Scoring;
+                return (Scoring) formatter.Deserialize(stream);
             }
 
 

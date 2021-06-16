@@ -11,23 +11,23 @@ namespace Doodle
         // E.G only this script is meant to be scriptable, but not the other scripts
         // so you add System.NonSerilized to the variable, it wont count it.
         [System.NonSerialized]
-        public PlayerControl playCont;
+        private PlayerControl playCont;
         [System.NonSerialized]
         private GameGui gui;        
-        public float highScore;
-        [Header("pootis")]
-        public float savedScore;
+
+        public float highScore = 999;
+        public float savedScore = 999;
 
 
 
-        public void RecordScore()
-        {    
-            if (playCont.wonGame == true)
-            {
-                gui.timer = highScore;
-                gui.timer = savedScore; 
+        //public void RecordScore()
+        //{    
+        //    if (playCont.wonGame == true)
+        //    {
+        //        gui.timer = highScore;
+        //        gui.timer = savedScore; 
                 
-            }
-        }
+        //    }
+        //}
     }
 }
