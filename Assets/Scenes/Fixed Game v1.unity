@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 325519125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5161259219713427534}
+        m_TargetAssemblyTypeName: Doodle.GameGui, Assembly-CSharp
+        m_MethodName: LoadMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &325519125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &876219810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -507,7 +519,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SavedScore: '
+  m_text: 'SavedScore
+
+    N/A'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -534,8 +548,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -669,8 +683,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1799697191}
-        m_TargetAssemblyTypeName: Doodle.SaveLoad, Assembly-CSharp
-        m_MethodName: Save
+        m_TargetAssemblyTypeName: SaveLoad.SaveLoad, Assembly-CSharp
+        m_MethodName: SaveBinary
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5161259219713427534}
+        m_TargetAssemblyTypeName: Doodle.GameGui, Assembly-CSharp
+        m_MethodName: SaveScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1097,7 +1123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi Scores
+  m_text: Load Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1414,9 +1440,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5161259219713427534}
-        m_TargetAssemblyTypeName: Doodle.GameGui, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 1799697191}
+        m_TargetAssemblyTypeName: SaveLoad.SaveLoad, Assembly-CSharp
+        m_MethodName: LoadBinary
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1628,8 +1654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score:
-    playCont: {fileID: 5161259219366177898}
-    highScore: 0
+    highScore: 0.59
+    savedScore: 0
 --- !u!4 &1799697192
 Transform:
   m_ObjectHideFlags: 0
@@ -1638,7 +1664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799697190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.20123, y: 170.27934, z: -469.2641}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2560,8 +2586,8 @@ MonoBehaviour:
   playControl: {fileID: 5161259219366177898}
   camera: {fileID: 904577210}
   score:
-    playCont: {fileID: 0}
     highScore: 0
+    savedScore: 0
   timerText: {fileID: 5161259220099002062}
   score2Beat: {fileID: 0}
   winningScore: {fileID: 1486387376}

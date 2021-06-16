@@ -14,9 +14,9 @@ namespace Doodle
 
         [SerializeField]
         private new Camera camera;
-        
+
         [SerializeField]
-        private Scoring score = new Scoring();
+        private Scoring score;
         
 
 
@@ -38,7 +38,9 @@ namespace Doodle
 
         private void Start()
         {
+            score.savedScore = 999;
             winningScore.text = score.highScore.ToString("F2");
+            savedScore.text = $"Saved Score \n {score.savedScore.ToString("F2")}";
         }
 
         // Update is called once per frame
@@ -94,6 +96,7 @@ namespace Doodle
 
             startedGame = false;
             score.highScore = timer;
+            score.savedScore = timer;
             
             winningScore.gameObject.SetActive(true);
             timerText.gameObject.SetActive(false);
@@ -104,7 +107,8 @@ namespace Doodle
 
         public void SaveScore()
         {
-            savedScore.text = score.highScore.ToString("F2");
+            savedScore.text = $"Saved Score \n {score.highScore.ToString("F2")}";
+            score.savedScore = score.highScore;
         }
         public void LoadMenu()
         {
