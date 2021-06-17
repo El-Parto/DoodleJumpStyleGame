@@ -67,7 +67,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 1d19fe97829b0bc4eb072623d6fc60fc
+    name: GameAudio
+  - guid: 1182e0a0154239649a8953d295e291e2
+    name: GamePitch
+  - guid: 5553b20238db5a642a1cff042de69808
+    name: MenuAudio
   m_AudioMixerGroupViews:
   - guids:
     - b1bf352ddba912b44ad26d37aee6ea33

@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -171.1, y: 104.3}
+  m_AnchoredPosition: {x: -171.1, y: 94.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313883205
@@ -1049,8 +1049,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSlider: {fileID: 1933652328}
   bgmText: {fileID: 313883205}
-  bgmValue: 0
-  menuBGM: {fileID: 1864038282}
+  mixer: {fileID: 24100000, guid: 003eb22928cb9cc4db05c3b6dddf588a, type: 2}
+  menuParam: MenuAudio
+  gameParam: GameAudio
+  gamePitchParam: GamePitch
   gameBGM: {fileID: 1239137626}
   gameGui: {fileID: 5161259219713427534}
 --- !u!81 &909406889
@@ -2667,7 +2669,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 909406887}
+        m_TargetAssemblyTypeName: Doodle.AudioManager, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2084742546
 GameObject:
   m_ObjectHideFlags: 0
