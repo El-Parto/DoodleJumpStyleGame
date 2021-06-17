@@ -10,6 +10,9 @@ namespace Doodle
 
         private Rigidbody2D playerRB;
 
+        [SerializeField]
+        private AudioManager aManager;
+
         public bool canMove = true;
 
         public float moving = 1;
@@ -46,7 +49,7 @@ namespace Doodle
             if (wonGame)
             {
                 canMove = false;
-                
+                Suprise();
             }
                 
 
@@ -84,7 +87,12 @@ namespace Doodle
                 moveSpeed = 0;
             }
         }
-
+        public void Suprise()
+        {
+            float _pitch;
+            _pitch = aManager.gameBGM.pitch;
+            aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "BounceTrigger")

@@ -10,7 +10,8 @@ namespace Doodle
 {
     public class GameGui : MonoBehaviour
     {
-        public PlayerControl playControl;
+        [SerializeField]
+        private PlayerControl playControl;
 
         [SerializeField]
         private new Camera camera;
