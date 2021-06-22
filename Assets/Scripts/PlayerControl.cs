@@ -8,7 +8,7 @@ namespace Doodle
     public class PlayerControl : MonoBehaviour
     {
         private Rigidbody2D playerRB;
-
+        
         [SerializeField]
         private AudioManager aManager;
 
@@ -24,13 +24,17 @@ namespace Doodle
         public bool ableToBounce = false;
         public bool bouncePress = false;
 
+        public bool dead = false;
+        private bool running = false;
         [SerializeField]
         private bool isGrounded = true;
 
         public bool wonGame = false;
 
+        [SerializeField]
         private Animator anim;
 
+       
 
         // Start is called before the first frame update
         void Start()
@@ -42,17 +46,31 @@ namespace Doodle
         // Update is called once per frame
         void Update()
         {
+            anim.SetFloat("Running", Mathf.Abs(moving));
+            
             playerRB.velocity = new Vector2(moving, playerRB.velocity.y);
             HorizontalMove();
             VerticalMove();
             Bouncing();
+            #region If statements
             if (wonGame)
             {
                 canMove = false;
-                Suprise();
             }
-                
-
+            if (!isGrounded)
+            {
+                anim.SetBool("Jumping", true);
+            }
+            else
+                anim.SetBool("Jumping", false);
+            if (ableToBounce)
+            {
+                anim.SetBool("Bouncy", true);
+                anim.SetBool("Jumping", false);
+            }
+            else
+                anim.SetBool("Bouncy", false);
+            #endregion
         }
 
         private void VerticalMove()
@@ -62,15 +80,26 @@ namespace Doodle
                 if (Input.GetButtonDown("Jump") && isGrounded)
                 {
                     playerRB.velocity += Vector2.up * jumpHeight;
-                }
+                }               
             }
+
+                
         }
         private void HorizontalMove()
         {
             //isHorriMoving = true;
             if (canMove)
             {
+
                 moving = Input.GetAxisRaw("Horizontal") * moveSpeed;
+                //if (moving > 0.5)
+                //{
+                    
+                    
+                //    running = true;
+                //    anim.SetBool("Running", running);
+                //}
+
             }
             //InherentDash();
         }
@@ -87,12 +116,12 @@ namespace Doodle
                 moveSpeed = 0;
             }
         }
-        public void Suprise()
-        {
-            //float _pitch;
-            //_pitch = aManager.gameBGM.pitch;
-           // aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
-        }
+        //public void Suprise()
+        //{ Not anymore :<
+        //    //float _pitch;
+        //    //_pitch = aManager.gameBGM.pitch;
+        //   // aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
+        //}
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "BounceTrigger")

@@ -89,19 +89,20 @@ namespace Doodle
 
 
         /// <summary>
-        /// Changes volume dynamically in game
+        /// Mutes the menu Music when out of the menu
         /// </summary>
         public void MuteMenuMusic()
         {
             if (gameGui.startedGame == true)
             {
                 mixer.SetFloat(menuParam, -100);
+                mixer.SetFloat(gameParam, bgmSlider.value);
             }
         }
 
         /// <summary>
-        /// When you change the value on the slider, update the player prefs float
-        /// and save them to player prefs
+        /// Changes the volume of the audio (Game BGM and Menu BGM respectively)
+        /// based on bgmSlider's Value.
         /// </summary>
         public void OnValueChanged()
         {
@@ -131,12 +132,12 @@ namespace Doodle
         /// </summary>
         public void PlayerPrefSave()
         {
-            //this only saves the slider position
+            //this only sets the slider position
             PlayerPrefs.SetFloat(menuParam, bgmSlider.value); // sets the menu param based on the slider variable
 
-            //this will save the volume position
+            //this will set the volume position
             PlayerPrefs.SetFloat(menuParam, sliderValue); // sets the menu param based on the slider variable
-            PlayerPrefs.Save();// saves it out
+            PlayerPrefs.Save();// saves the "set floats" out
 
         }
     }

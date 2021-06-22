@@ -26,17 +26,24 @@ namespace Doodle
         private AudioManager audioM;
 
         public TextMeshProUGUI timerText;
-        public TextMeshProUGUI score2Beat;
+        [SerializeField]
+        private TextMeshProUGUI gameOverText;
+        [SerializeField]
+        private TextMeshProUGUI score2Beat;
         public TextMeshProUGUI winningScore; // the score that shows up as you beat the game
         public TextMeshProUGUI savedScore; // the score that shows up as you save the score
 
         public Button saveButton;
         public Button reloadButton;
 
+        public bool gameOver;
+
         [SerializeField]
         private GameObject gameLoader;
         [SerializeField]
         private GameObject mMenuEelemts;
+        [SerializeField]
+        private GameObject deathWall;
         public bool startedGame = false;
 
         public float timer;
@@ -53,9 +60,12 @@ namespace Doodle
             if (playControl.wonGame)
             {
                 WonGame();
-                
+                deathWall.SetActive(false);
             }
-            
+            if (playControl.dead)
+            {
+                LoseGame();
+            }
         }
 
         public void PlayGame()
@@ -100,7 +110,17 @@ namespace Doodle
             saveButton.gameObject.SetActive(true);
             reloadButton.gameObject.SetActive(true);            
         }
+        public void LoseGame()
+        {
 
+            score.highScore = timer;
+            startedGame = false;
+            timerText.gameObject.SetActive(false);
+            gameOverText.text = $"You died in {score.highScore.ToString("F2")} seconds.\n No saving for you!";
+            gameOverText.gameObject.SetActive(true);
+            reloadButton.gameObject.SetActive(true);
+
+        }
         public void SaveScore()
         {
             savedScore.text = $"Saved Score \n {score.highScore.ToString("F2")}";
