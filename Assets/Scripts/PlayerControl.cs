@@ -53,6 +53,7 @@ namespace Doodle
             VerticalMove();
             Bouncing();
             #region If statements
+            //these control the Animator bools
             if (wonGame)
             {
                 canMove = false;
@@ -73,6 +74,10 @@ namespace Doodle
             #endregion
         }
 
+        /// <summary>
+        /// if you can move, and press the associated jump key while grounded,
+        /// your velocity in the y direction increases, allowing you to jump.
+        /// </summary>
         private void VerticalMove()
         {
             if (canMove)
@@ -85,30 +90,29 @@ namespace Doodle
 
                 
         }
+
+        /// <summary>
+        /// If you can move, then your speed is now the input of Horizontal * Movespeed
+        /// </summary>
         private void HorizontalMove()
         {
             //isHorriMoving = true;
             if (canMove)
             {
-
                 moving = Input.GetAxisRaw("Horizontal") * moveSpeed;
-                //if (moving > 0.5)
-                //{
-                    
-                    
-                //    running = true;
-                //    anim.SetBool("Running", running);
-                //}
-
             }
             //InherentDash();
         }
+        /// <summary>
+        /// When colliding with various tags, activates the associated bool and performs specific events.
+        /// </summary>
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Jumpable")
             {
-                isGrounded = true;
+                isGrounded = true; // this is so the player may jump again after touching the ground
             }
+            //if the win con is touched, you win the game.
             if (collision.gameObject.tag == "Win Con")
             {
                 wonGame = true;
@@ -117,11 +121,15 @@ namespace Doodle
             }
         }
         //public void Suprise()
-        //{ Not anymore :<
+        //{ was going to modify pitch whenever you finished the game. I mean, there's no reason for this not to happen but
         //    //float _pitch;
         //    //_pitch = aManager.gameBGM.pitch;
         //   // aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
         //}
+
+        /// <summary>
+        /// When you enter a trigger that is named BounceTrigger, you are able to bounce
+        /// </summary>
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "BounceTrigger")
@@ -142,9 +150,10 @@ namespace Doodle
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    playerRB.velocity = new Vector2(moveSpeed, (playerRB.velocity.y * bounceMult));
+                    playerRB.velocity = new Vector2(moveSpeed, (playerRB.velocity.y * bounceMult));// velocity is multiplied by bounce mult
                     Debug.Log("bounce");
                 }
+                //when you release the key, you lose your chance to bounce while inside the trigger zone
                 if (Input.GetKeyUp(KeyCode.Space))
                 {
                     ableToBounce = false;
@@ -153,7 +162,9 @@ namespace Doodle
             }
         }
 
-
+        /// <summary>
+        /// after exiting the trigger, your are no longer able to increase your velocity.
+        /// </summary>
         private void OnTriggerExit2D(Collider2D collision)
         {
             ableToBounce = false; // sets being able to bounce to false

@@ -17,17 +17,5 @@ namespace Doodle
 
         public float highScore = 999;
         public float savedScore = 999;
-
-
-
-        //public void RecordScore()
-        //{    
-        //    if (playCont.wonGame == true)
-        //    {
-        //        gui.timer = highScore;
-        //        gui.timer = savedScore; 
-                
-        //    }
-        //}
     }
 }

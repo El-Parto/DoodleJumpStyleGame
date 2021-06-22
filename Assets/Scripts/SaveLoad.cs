@@ -14,7 +14,7 @@ namespace SaveLoad
 
         //public Scoring score;
 
-        private string FilePath => Application.streamingAssetsPath + "/scoreData";
+        private string FilePath => Application.streamingAssetsPath + "/scoreData"; //String variable for the streaming assets path + /scoreData as a suffix.
 
         // Start is called before the first frame update
         void Start()
@@ -22,7 +22,10 @@ namespace SaveLoad
             ValidateFolder(Application.streamingAssetsPath);
         }
 
-
+        /// <summary>
+        /// if the directory doesn't exist, creates a new one.
+        /// </summary>
+        /// <param name="_folder">folder name based off of the streaming assets path</param>
         private void ValidateFolder(string _folder)
         {
             if (!Directory.Exists(_folder))
@@ -35,16 +38,16 @@ namespace SaveLoad
         public void SaveBinary(Scoring score)
         {
             // * This opens the "river" between the RAM and the file.
-            // creating te river                         file loc'             river? Important.
-            using (FileStream stream = new FileStream(FilePath + ".save", FileMode.OpenOrCreate))
+            // creating te river                         file loc'             river
+            using (FileStream stream = new FileStream(FilePath + ".save", FileMode.OpenOrCreate))  // creating the channel that allows us to save.
             {
                 // like creating the boat that will carry the data from one point to another.
-                BinaryFormatter formatter = new BinaryFormatter();
+                BinaryFormatter formatter = new BinaryFormatter(); //makes it able to save by specifying what type are we saving
                 
                 //give memory stream
                 //* transports the data from the RAM to the specified file
                 // * like freezing water into ice.
-                formatter.Serialize(stream, score);
+                formatter.Serialize(stream, score);// the saving command
             }
         }
 
@@ -56,13 +59,13 @@ namespace SaveLoad
                 return null;
 
             // * This opens the "river" between the RAM and the file.
-            // creating te river                         file loc'             river? Important.
-            using (FileStream stream = new FileStream(FilePath + ".save", FileMode.Open))
+            // creating te river                         file loc'             river 
+            using (FileStream stream = new FileStream(FilePath + ".save", FileMode.Open)) // opening up the channel to load from
             {
                 // like creating the boat that will carry the data from one point to another.
-                BinaryFormatter formatter = new BinaryFormatter();
+                BinaryFormatter formatter = new BinaryFormatter(); //specifying the accesser need for it to load
 
-                return (Scoring) formatter.Deserialize(stream);
+                return (Scoring) formatter.Deserialize(stream); // loads here.
             }
 
 
