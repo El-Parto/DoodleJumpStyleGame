@@ -137,7 +137,7 @@ namespace Doodle
         }
         public void LoadMenu()
         {
-            SceneManager.LoadScene("Fixed Game v1");
+            SceneManager.LoadScene("Fixed Game v2");
         }
 
     }
