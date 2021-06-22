@@ -18,14 +18,32 @@ namespace Doodle
         [SerializeField] private AudioMixer mixer; // Note to self, use Audio Mixer instead of AudioSource
         [SerializeField] private string menuParam = "MenuAudio"; // used with Exposed Parameter in AudioMixer in the Unity window
         [SerializeField] private string gameParam = "GameAudio"; // used with Exposed Parameter in AudioMixer in the Unity window
-        [SerializeField] private string gamePitchParam = "GamePitch"; // used with Exposed Parameter in AudioMixer in the Unity window
 
-        public AudioSource gameBGM;//forgive me James(teacher) i wanted to change the pitch of the audio source. I know there's the value in exposed parameter but i don't need to save it so YOLO
+        [SerializeField] private AudioSource gameBGM;//forgive me James(teacher) i wanted to change the pitch of the audio source. I know there's the value in exposed parameter but i don't need to save it so YOLO
+
+        private float sliderValue;
+
 
         public GameGui gameGui;
 
         private void Awake()
-        {   
+        {
+            bgmSlider.maxValue = 0; // set up the mix value
+            bgmSlider.minValue = -100; // set up the max value for slider
+
+                
+
+            // setting the previous values from playerprefs here
+            //if (PlayerPrefs.HasKey(menuParam))
+            //{
+            //    //float slider value now equals whatever the PlayerPrefs had saved before
+            //    PlayerPrefs.GetFloat(menuParam);
+            //    sliderValue = PlayerPrefs.GetFloat(menuParam);
+            //    //bgmSlider.value = PlayerPrefs.GetFloat(menuParam);
+
+
+            //}
+           // bgmSlider.value = PlayerPrefs.GetFloat(menuParam);
         }
 
 
@@ -34,59 +52,52 @@ namespace Doodle
         // Start is called before the first frame update
         void Start()
         {
-            //bgmSlider.value = 1;
-
 
             if (PlayerPrefs.HasKey(menuParam))
             {
-                PlayerPrefs.GetFloat(menuParam);
+                bgmSlider.value = PlayerPrefs.GetFloat(menuParam);
+                mixer.SetFloat(menuParam, sliderValue);
             }
-            else
-            {
-                //PlayerPrefs.SetFloat(menuParam,);
-            }
-            if (PlayerPrefs.HasKey(gameParam))
-            {
-                PlayerPrefs.GetFloat(gameParam);
-            }
-            else
-            {
-                //PlayerPrefs.SetFloat(gameParam, 1);
-            }
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            bgmText.text = $"BGM: {Mathf.RoundToInt(bgmSlider.value * 100)}%";
-            
-            //VolumeChanger();
+            bgmText.text = $"BGM: {Mathf.RoundToInt(bgmSlider.value + 100)}%";
+
+            MuteMenuMusic();
 
         }
 
 
         /// <summary>
-        /// t
+        /// turns on Game Music and turns Menu music to -100
         /// </summary>
         public void TurnOnMusic()
         {
-            mixer.SetFloat(menuParam, 0);
-            mixer.SetFloat(gameParam, 100);
-            //menuBGM.mute = true;            
-            //gameBGM.mute = !gameBGM.mute;
-            //gameBGM.Play();
+ 
+
+            if (gameGui.startedGame == true)
+            { 
+                mixer.SetFloat(gameParam, 0);// sets the game param float volume to 0 (which means normal volume)
+            }
+            else
+                mixer.SetFloat(gameParam, -100);// sets game param to -100 otherwise
+            gameBGM.Play();
         }
 
 
         /// <summary>
         /// Changes volume dynamically in game
         /// </summary>
-        //public void VolumeChanger()
-        //{
-        //    mixer.SetFloat(menuParam, bgmSlider.value);
-        //    mixer.SetFloat(gameParam, bgmSlider.value);
-              //PlayerPrefs.Save();
-        //}
+        public void MuteMenuMusic()
+        {
+            if (gameGui.startedGame == true)
+            {
+                mixer.SetFloat(menuParam, -100);
+            }
+        }
 
         /// <summary>
         /// When you change the value on the slider, update the player prefs float
@@ -94,11 +105,39 @@ namespace Doodle
         /// </summary>
         public void OnValueChanged()
         {
-            mixer.SetFloat(menuParam, bgmSlider.value);
-            mixer.SetFloat(gameParam, bgmSlider.value);
-            PlayerPrefs.SetFloat(menuParam, bgmSlider.value);
-            PlayerPrefs.SetFloat(gameParam, bgmSlider.value);
-            PlayerPrefs.Save();
+            //if game ahas started
+            if(gameGui.startedGame == true)
+            {
+                //set the current volume of the ingame audio to the bgm slider value
+                mixer.SetFloat(gameParam, bgmSlider.value);
+                //update the variable value to match gui slider value.
+                
+                Debug.Log($"gameAudio has been set to{PlayerPrefs.GetFloat(menuParam)}");
+
+            }
+            else
+            {               
+                mixer.SetFloat(menuParam, bgmSlider.value);
+                Debug.Log($"MenuAudio has been set to{PlayerPrefs.GetFloat(menuParam)}");
+            }
+            sliderValue = bgmSlider.value;
+            print(PlayerPrefs.GetFloat(menuParam));
+        }
+
+        /// <summary>
+        /// I had to make a save function here for the PlayerPrefs because it doesn't like being saved in the slider's
+        /// "OnValueChanged" function.
+        /// I had more trouble with this than I should of.
+        /// </summary>
+        public void PlayerPrefSave()
+        {
+            //this only saves the slider position
+            PlayerPrefs.SetFloat(menuParam, bgmSlider.value); // sets the menu param based on the slider variable
+
+            //this will save the volume position
+            PlayerPrefs.SetFloat(menuParam, sliderValue); // sets the menu param based on the slider variable
+            PlayerPrefs.Save();// saves it out
+
         }
     }
 }

@@ -72,6 +72,8 @@ AudioMixerController:
     name: GameAudio
   - guid: 1182e0a0154239649a8953d295e291e2
     name: GamePitch
+  - guid: a47375e587aec8442a460a34397d369b
+    name: MasterAudio
   - guid: 5553b20238db5a642a1cff042de69808
     name: MenuAudio
   m_AudioMixerGroupViews:
@@ -128,6 +130,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 4bb029bb26658de4db279a217a5844c4
   m_FloatValues:
     1182e0a0154239649a8953d295e291e2: 1
+    5553b20238db5a642a1cff042de69808: -1.2
     1d19fe97829b0bc4eb072623d6fc60fc: 0
   m_TransitionOverrides: {}
 --- !u!244 &54505530530334550

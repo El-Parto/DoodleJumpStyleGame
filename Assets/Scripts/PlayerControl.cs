@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace Doodle
 {
     public class PlayerControl : MonoBehaviour
     {
-        
-
         private Rigidbody2D playerRB;
 
         [SerializeField]
@@ -30,6 +29,7 @@ namespace Doodle
 
         public bool wonGame = false;
 
+        private Animator anim;
 
 
         // Start is called before the first frame update
@@ -89,9 +89,9 @@ namespace Doodle
         }
         public void Suprise()
         {
-            float _pitch;
-            _pitch = aManager.gameBGM.pitch;
-            aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
+            //float _pitch;
+            //_pitch = aManager.gameBGM.pitch;
+           // aManager.gameBGM.pitch = Mathf.Lerp(_pitch, 0, 1 * Time.deltaTime);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

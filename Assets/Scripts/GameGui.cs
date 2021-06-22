@@ -22,6 +22,8 @@ namespace Doodle
         [SerializeField]
         private SaveLoad.SaveLoad saveLoad;
 
+        [SerializeField]
+        private AudioManager audioM;
 
         public TextMeshProUGUI timerText;
         public TextMeshProUGUI score2Beat;
@@ -56,14 +58,6 @@ namespace Doodle
             
         }
 
-        private void WinGame()
-        {
-            if (playControl.wonGame == true)
-            {
-
-
-            }
-        }
         public void PlayGame()
         {
             gameLoader.SetActive(true);
@@ -71,7 +65,8 @@ namespace Doodle
             camera.GetComponent<PositionConstraint>().constraintActive = true;
             camera.GetComponent<PositionConstraint>().enabled = true;
             timerText.gameObject.SetActive(true);
-            startedGame = true;            
+            startedGame = true;
+           
         }
         public void QuitGame()
         {
@@ -124,5 +119,6 @@ namespace Doodle
         {
             SceneManager.LoadScene("Fixed Game v1");
         }
+
     }
 }
