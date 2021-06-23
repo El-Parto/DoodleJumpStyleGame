@@ -34,7 +34,10 @@ namespace SaveLoad
 
 
 
-
+        /// <summary>
+        /// Saves out the score from the class Scoring to Binary
+        /// </summary>
+        /// <param name="score"> the value attained when the timer stops after you beat the game.</param>
         public void SaveBinary(Scoring score)
         {
             // * This opens the "river" between the RAM and the file.
@@ -51,7 +54,10 @@ namespace SaveLoad
             }
         }
 
-
+        /// <summary>
+        /// loads the binary data from the saved file and brings it in as score.
+        /// </summary>
+        /// <returns>it returns the values to the scoring class so that it may replace the varriables located there.</returns>
         public Scoring LoadBinary()
         {
             //if there is no save data we shouldn't attempt to load it

@@ -23,7 +23,7 @@ namespace Doodle
 
         private float sliderValue; // the valu e that is used to store saved values for PlayerPrefs
 
-        [SerialisedField]
+        [SerializeField]
         private GameGui gameGui;
 
         private void Awake()

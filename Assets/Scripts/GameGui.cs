@@ -35,6 +35,9 @@ namespace Doodle
 
         public Button saveButton;
         public Button reloadButton;
+        [SerializeField]
+        private GameObject minMap;
+
 
         public bool gameOver;
 
@@ -76,6 +79,7 @@ namespace Doodle
         /// </summary>
         public void PlayGame()
         {
+            minMap.SetActive(true);
             gameLoader.SetActive(true);
             mMenuEelemts.SetActive(false);
             camera.GetComponent<PositionConstraint>().constraintActive = true;
@@ -111,6 +115,7 @@ namespace Doodle
         /// </summary>
         public void WonGame()
         {
+
             camera.GetComponent<PositionConstraint>().enabled = false;
             camera.GetComponent<PositionConstraint>().constraintActive = false;
 
@@ -132,7 +137,7 @@ namespace Doodle
         /// </summary>
         public void LoseGame()
         {
-
+            minMap.SetActive(false);
             score.highScore = timer;
             startedGame = false;
             timerText.gameObject.SetActive(false);
